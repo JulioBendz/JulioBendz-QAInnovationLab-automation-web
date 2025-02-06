@@ -57,6 +57,18 @@
             <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>qa-lab-selenium</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.composum.pages</groupId>
+            <artifactId>composum-pages</artifactId>
+            <version>1.5.2</version>
+            <scope>test</scope>
+        </dependency>
         <!-- Proyecto CON CUCUMBER-->
 
     </dependencies>

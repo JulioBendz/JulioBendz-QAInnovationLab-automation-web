@@ -1,50 +1,21 @@
 package com.nttdata.steps;
 
-import com.nttdata.page.LoginPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-
+import pages.LoginPage;
 
 public class LoginSteps {
+    private LoginPage loginPage;
 
-    private WebDriver driver;
-
-    //constructor
-    public LoginSteps(WebDriver driver){
-        this.driver = driver;
+    public LoginSteps() {
+        this.loginPage = new LoginPage();
     }
 
-    /**
-     * Escribir el usuario
-     * @param user el usuario
-     */
-    public void typeUser(String user){
-        WebElement userInputElement = driver.findElement(LoginPage.userInput);
-        userInputElement.sendKeys(user);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(444));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPage.loginButton));
-
-
+    public void login(String email, String password) {
+        loginPage.enterEmail(email);
+        loginPage.enterPassword(password);
+        loginPage.clickLogin();
     }
 
-    /**
-     * Escribir el password
-     * @param password el password del usuario
-     */
-    public void typePassword(String password){
-        this.driver.findElement(LoginPage.passInput).sendKeys(password);
+    public boolean isLoginErrorDisplayed() {
+        return loginPage.isLoginErrorDisplayed();
     }
-
-    /**
-     * Hacer click en el botón login
-     */
-    public void login(){
-        this.driver.findElement(LoginPage.loginButton).click();
-    }
-
 }
